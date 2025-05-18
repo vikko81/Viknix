@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Video Downloader</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      color: #333;
+    }
+    .tabs {
+      margin-top: 20px;
+    }
+    .tabs button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .tabs button:hover {
+      background-color: #0056b3;
+    }
+    .tab-content {
+      margin-top: 30px;
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    button.download-btn {
+      background-color: green;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button.download-btn:hover {
+      background-color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+  <h1>VikasAll Video Downloader.  Fb video download 1080p - 3K - 5K. Free. All devices   </h1>
+
+  <div class="tabs">
+    <button onclick="showTab('facebook')">Facebook</button>
+    <button onclick="showTab('instagram')">Instagram</button>
+    <button onclick="showTab('tiktok')">TikTok</button>
+  </div>
+
+  <div id="facebook" class="tab-content active">
+    <h2>        </h2>
+    <input type="text" id="fbLink" placeholder="Paste Facebook video link here"/>
+    <br/>
+    <button class="download-btn" onclick="downloadVideo('facebook')">Download..
+    
+          
+   </button></di.
+
+ h<div id="instagram" class="tab-content">
+    <h2>Download Instagram Video</h2>
+    <input type=
+    
+    "text" id="igLink" placeholder="Paste Instagram video/reel link here"/>
+    <br/>
+    <button class="download-btn" onclick="downloadVideo('instagram')">Downloaclass</button>
+  </div>
+
+  <div id="tiktok" class="tabb-content">
+    <h2>Download TikTok Video</h2>
+    <input type="text" id="ttLink" placeholder="Paste TikTok video link here"/>
+    <br/>
+    <button class="download-btn" onclick="downloadVideo('tiktok')">Downloaf</button>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function downloadVideo(platform) {
+      let link = '';
+      if (platform === 'facebook') {
+        link = document.getElementById('fbLink').value;
+      } else if (platform === 'instagram') {
+        link = document.getElementById('igLink').value;
+      } else if (platform === 'tiktok') {
+        link = document.getElementById('ttLink').value;
+      }
+
+      if (!link) {
+        alert('Please paste a valid video link.');
+        return;
+      }
+
+      // Placeholder for actual download logic/API integration
+      alert(`Downloading from ${platform}: ${link}`);
+    }
+  </script>
+
+<!-- Video Downloader Section -->
+<section id="video-downloader" style="margin-top: 50px; text-align: center;">
+  <h2>वीडियो डाउनलोड करें (Facebook, Instagram, TikTok)</h2>
+  <input type="text" id="videoURL" placeholder="यहाँ वीडियो लिंक पेस्ट करें" style="width: 60%; padding: 10px; font-size: 16px;">
+  <button onclick="downloadVideo()" style="padding: 10px 20px; font-size: 16px; margin-left: 10px;">डाउनलोड</button>
+  <p id="downloadMessage" style="margin-top: 20px;"></p>
+</section>
+
+<script>
+  function downloadVideo() {
+    var url = document.getElementById("videoURL").value.trim();
+    if (!url) {
+      document.getElementById("downloadMessage").innerText = "कृपया वीडियो लिंक डालें।";
+      return;
+    }
+
+    let serviceUrl = '';
+    if (url.includes("facebook.com")) {
+      serviceUrl = "https://www.getmyfb.com/?url=" + encodeURIComponent(url);
+    } else if (url.includes("instagram.com")) {
+      serviceUrl = "https://saveig.app/en?url=" + encodeURIComponent(url);
+    } else if (url.includes("tiktok.com")) {
+      serviceUrl = "https://ssstik.io/en?url=" + encodeURIComponent(url);
+    } else {
+      document.getElementById("downloadMessage").innerText = "सिर्फ Facebook, Instagram और TikTok लिंक सपोर्टेड हैं।";
+      return;
+    }
+
+    window.open(serviceUrl, "_blank");
+  }
+</script>
+
+</body>
+</html>
